@@ -1,0 +1,45 @@
+query GetTodos {
+  todos(
+    order_by: { created_at: desc }
+    where: { user: { name: { _eq: "mennaelgallad" } } }
+  ) {
+    id
+    title
+    created_at
+    is_completed
+  }
+}
+
+mutation InsertTodos($title: String) {
+  insert_todos_one(object: { is_public: true, title: $title }) {
+    id
+    title
+    created_at
+    is_completed
+  }
+}
+
+query getTodoId($id: Int!) {
+  todos_by_pk(id: $id) {
+    created_at
+    title
+  }
+}
+
+mutation completed($id: Int!) {
+  update_todos_by_pk(pk_columns: { id: $id }, _set: { is_completed: true }) {
+    id
+    title
+    created_at
+    is_completed
+  }
+}
+
+mutation deletetodo($id: Int!) {
+  delete_todos_by_pk(id: $id) {
+    id
+    title
+    created_at
+    is_completed
+  }
+}

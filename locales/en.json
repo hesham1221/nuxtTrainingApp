@@ -1,0 +1,17 @@
+{
+    "hello": "Hello",
+    "language": "Language",
+    "button": "click here",
+    "logo": "PRACTICE",
+    "contact": "Contact Us",
+    "products": "Products",
+    "users": "Users",
+    "services": "Services",
+    "home": "Home",
+    "sign": "sign in",
+    "advice": "THIS SITE IS A PRACTICE FOR NUXT3 And GRAPHQL AND ALSO I18N " ,
+    "advice-cont": "DESIGNED BY MENNA ELGALLD , I HOPE YOU LIKE IT",
+    "read": "Read More",
+    "todos": "Todos" ,
+    "addtodo": "Add a task"
+}
