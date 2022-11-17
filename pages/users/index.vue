@@ -1,10 +1,12 @@
 <template lang="pug">
-.container   
-    h1 Main users
-    input(type="text" v-model="searchval") 
-    button.primary-button(@click="finduser") search 
-    .cardele
-        Card(v-for="user in users" :name="user.name" :id="user.id" todos="user" )
+
+.container 
+    h1.mt-2 Search in users by id 
+    .searching.d-flex.mt-4.justify-content-between(style="gap:20px")  
+      input(type="text" v-model="searchval" placeholder="search in users" style="width:90%") 
+      button.primary-button(@click="finduser") search 
+    .cardele(v-if="users")
+        Card(v-for="user in users" :name="user.name" :id="user.id" :todos="user.todos" )
        
 </template>
 
@@ -14,7 +16,13 @@ const searchval = ref("");
 const { data } = await useAsyncGql({
   operation: "GetUsers"
 });
-const users = ref(data.value.users);
+let users = ref(data.value?.users)
+
+// watch( data.value, (curr ,old) =>{
+//   users = curr.users;
+//   console.log("from watch",users)
+
+// })
 
 // watch(searchval, (currentValue, oldValue) => {
 //       console.log(currentValue);
@@ -30,9 +38,14 @@ function finduser() {
 </script>
 
 <style lang="scss" scoped>
+
+.searching{
+  display: flex;
+}
 .cardele {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+ 
 }
 </style>

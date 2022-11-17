@@ -7,21 +7,21 @@
     .todos
 
       ul.mt-4 
-        li(@click="completed(todo.id)" v-for="todo in myalltodos")
-          transition(name="slide" appear)
-            .content.d-flex.justify-content-between.align-items-center(v-if="todo.id===addedtodo.insert_todos_one?.id" :class="{complited: todo.is_completed}")
+        li(@click="completed(mytodo.id)" v-for="mytodo in myalltodos")
+          transition(name="slide" )
+            .content.d-flex.justify-content-between.align-items-center(v-if="mytodo.id===addedtodo.insert_todos_one?.id" :class="{complited: mytodo.is_completed}")
               .data
-                h2 {{todo.title}}  
-                p {{todo.id}}{{addedtodo.insert_todos_one?.id}}
+                h2 {{mytodo.title}}  
+                p {{mytodo.id}}{{addedtodo.insert_todos_one?.id}}
                 h5.mt-2 Created at 
-                  span {{todo.created_at}}
-              button(class="mx-5" @click="deletetodo(todo.id)").primary-button delete
-          .content.d-flex.justify-content-between.align-items-center(v-if="todo.id!==addedtodo.insert_todos_one?.id" :class="{complited: todo.is_completed}")
+                  span {{mytodo.created_at}}
+              button(class="mx-5" @click="deletetodo(mytodo.id)").primary-button delete
+          .content.d-flex.justify-content-between.align-items-center(v-if="mytodo.id!==addedtodo.insert_todos_one?.id" :class="{complited: mytodo.is_completed}")
             .data
-              h2 {{todo.title}}  
+              h2 {{mytodo.title}}  
               h5.mt-2 Created at 
-                span {{todo.created_at}}
-            button(class="mx-5" @click="deletetodo(todo.id)").primary-button delete    
+                span {{mytodo.created_at}}
+            button(class="mx-5" @click="deletetodo(mytodo.id)").primary-button delete    
 
 </template>
 
@@ -31,7 +31,7 @@ let addedtodo = ref("");
 async function inserttodo() {
   addedtodo.value = null;
   useGqlToken(
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik9FWTJSVGM1UlVOR05qSXhSRUV5TURJNFFUWXdNekZETWtReU1EQXdSVUV4UVVRM05EazFNQSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6ImF1dGgwfDYzNzQwYmYzMzNhNjUyYWI1YjhiNDk0YiJ9LCJuaWNrbmFtZSI6Im1lbm5hZWxnYWxsYWQiLCJuYW1lIjoibWVubmFlbGdhbGxhZEBtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci8wZmI4Y2JjMjhiYzllYzVjZDMyMTk3NmJiYjA4OWJiMT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRm1lLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTExLTE1VDIyOjAwOjIwLjUxOFoiLCJpc3MiOiJodHRwczovL2dyYXBocWwtdHV0b3JpYWxzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mzc0MGJmMzMzYTY1MmFiNWI4YjQ5NGIiLCJhdWQiOiJQMzhxbkZvMWxGQVFKcnprdW4tLXdFenFsalZOR2NXVyIsImlhdCI6MTY2ODYzMTM2MiwiZXhwIjoxNjY4NjY3MzYyLCJhdF9oYXNoIjoiMkF6TkZFLTdDaDVRdXk3c1JkTkhnQSIsInNpZCI6IlhQZ3g1VGE5Rk5lWXZNeENHUkp4X1BmXzRJbzVpZmpWIiwibm9uY2UiOiJreGYtSlJvelF1Mmhfd0lrWEFPQmZjNTBxbUF1aHBDOSJ9.BsDfVUg2r-addMULy6vv-mL9nKJl-sg9CA1Jim-zcfQ3rJPcrdRjXCMyeBD7rDKw1SZSEVOpfPLt3b1v5tD9Xa9xON_6XfIo1GPVEfuMSfpAFuPTlpdoNT_dYRPDNXmjBhTeRJlKRj4EoILW50UWc_0ZU8CaVlKr0Ii59bokirrdMFox4MH9Taqk3_piPpeMfZvOKE7964BeNMtPvRSlAIjYqMuzaXt1ot2wqFtMHWzKdOxXTGAXxI2psiu7OGcwuJDNn18CjVIiRQ8VMz0Q9fbzThQKtJpfoElqWGWylNxoCQLQu7_fySgstj1fJAuOcod-S_dePtf5IYEMJH3P8A"
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik9FWTJSVGM1UlVOR05qSXhSRUV5TURJNFFUWXdNekZETWtReU1EQXdSVUV4UVVRM05EazFNQSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6ImF1dGgwfDYzNzQwYmYzMzNhNjUyYWI1YjhiNDk0YiJ9LCJuaWNrbmFtZSI6Im1lbm5hZWxnYWxsYWQiLCJuYW1lIjoibWVubmFlbGdhbGxhZEBtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci8wZmI4Y2JjMjhiYzllYzVjZDMyMTk3NmJiYjA4OWJiMT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRm1lLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTExLTE3VDA5OjMwOjM3LjQ5NloiLCJpc3MiOiJodHRwczovL2dyYXBocWwtdHV0b3JpYWxzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mzc0MGJmMzMzYTY1MmFiNWI4YjQ5NGIiLCJhdWQiOiJQMzhxbkZvMWxGQVFKcnprdW4tLXdFenFsalZOR2NXVyIsImlhdCI6MTY2ODY3NzQzOCwiZXhwIjoxNjY4NzEzNDM4LCJhdF9oYXNoIjoib1ppRzIyUGVvaF9lZUJyVzh2c0NmUSIsInNpZCI6Ijk3em9Fc3c3RWhtckhJcW9URG4zLUxyaWxLMmZVWmdOIiwibm9uY2UiOiJIMXZwZVRuenB4SlRfcTVCNnBoY2lrOXRicE5TfjFsZCJ9.gbSYn5cvJCujsuFJtpq04Qwjf0UQEv36ET6aaoFt47B7c1Wj7Fk8f4zYph9xqTSNs8BWREyXBIMEPkyS50zCMoXFVyFVqY41s5UrL0FaKaR5IUJmDjgIoNUsjHJ2KJ9qe5IevSDC8GrqiUrUxZ5AqTDV2jM_6ZvuiI0qeaqLRTl8Ap3s1vGnhnNUbRH97-fAYtmKgZKa9986GpPv7xcswUWD3FIWHICEi2qY9u0LzOS_4gl--qGQz7AHt8uQhAZ5RoJ_2QHphoItvMYs8EUVsWss9NUAq8MKkuHIUMmEWf2i1ItF_PnM6upu2xLXiQ8VDtgW-ZrXUsSzANODMB6R2w"
   );
   const { data, error } = await useAsyncGql({
     operation: "InsertTodos",
@@ -53,7 +53,7 @@ watch(addedtodo, (curr, old) => {
 
 async function completed(id) {
   useGqlToken(
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik9FWTJSVGM1UlVOR05qSXhSRUV5TURJNFFUWXdNekZETWtReU1EQXdSVUV4UVVRM05EazFNQSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6ImF1dGgwfDYzNzQwYmYzMzNhNjUyYWI1YjhiNDk0YiJ9LCJuaWNrbmFtZSI6Im1lbm5hZWxnYWxsYWQiLCJuYW1lIjoibWVubmFlbGdhbGxhZEBtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci8wZmI4Y2JjMjhiYzllYzVjZDMyMTk3NmJiYjA4OWJiMT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRm1lLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTExLTE1VDIyOjAwOjIwLjUxOFoiLCJpc3MiOiJodHRwczovL2dyYXBocWwtdHV0b3JpYWxzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mzc0MGJmMzMzYTY1MmFiNWI4YjQ5NGIiLCJhdWQiOiJQMzhxbkZvMWxGQVFKcnprdW4tLXdFenFsalZOR2NXVyIsImlhdCI6MTY2ODYzMTM2MiwiZXhwIjoxNjY4NjY3MzYyLCJhdF9oYXNoIjoiMkF6TkZFLTdDaDVRdXk3c1JkTkhnQSIsInNpZCI6IlhQZ3g1VGE5Rk5lWXZNeENHUkp4X1BmXzRJbzVpZmpWIiwibm9uY2UiOiJreGYtSlJvelF1Mmhfd0lrWEFPQmZjNTBxbUF1aHBDOSJ9.BsDfVUg2r-addMULy6vv-mL9nKJl-sg9CA1Jim-zcfQ3rJPcrdRjXCMyeBD7rDKw1SZSEVOpfPLt3b1v5tD9Xa9xON_6XfIo1GPVEfuMSfpAFuPTlpdoNT_dYRPDNXmjBhTeRJlKRj4EoILW50UWc_0ZU8CaVlKr0Ii59bokirrdMFox4MH9Taqk3_piPpeMfZvOKE7964BeNMtPvRSlAIjYqMuzaXt1ot2wqFtMHWzKdOxXTGAXxI2psiu7OGcwuJDNn18CjVIiRQ8VMz0Q9fbzThQKtJpfoElqWGWylNxoCQLQu7_fySgstj1fJAuOcod-S_dePtf5IYEMJH3P8A"
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik9FWTJSVGM1UlVOR05qSXhSRUV5TURJNFFUWXdNekZETWtReU1EQXdSVUV4UVVRM05EazFNQSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6ImF1dGgwfDYzNzQwYmYzMzNhNjUyYWI1YjhiNDk0YiJ9LCJuaWNrbmFtZSI6Im1lbm5hZWxnYWxsYWQiLCJuYW1lIjoibWVubmFlbGdhbGxhZEBtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci8wZmI4Y2JjMjhiYzllYzVjZDMyMTk3NmJiYjA4OWJiMT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRm1lLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTExLTE3VDA5OjMwOjM3LjQ5NloiLCJpc3MiOiJodHRwczovL2dyYXBocWwtdHV0b3JpYWxzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mzc0MGJmMzMzYTY1MmFiNWI4YjQ5NGIiLCJhdWQiOiJQMzhxbkZvMWxGQVFKcnprdW4tLXdFenFsalZOR2NXVyIsImlhdCI6MTY2ODY3NzQzOCwiZXhwIjoxNjY4NzEzNDM4LCJhdF9oYXNoIjoib1ppRzIyUGVvaF9lZUJyVzh2c0NmUSIsInNpZCI6Ijk3em9Fc3c3RWhtckhJcW9URG4zLUxyaWxLMmZVWmdOIiwibm9uY2UiOiJIMXZwZVRuenB4SlRfcTVCNnBoY2lrOXRicE5TfjFsZCJ9.gbSYn5cvJCujsuFJtpq04Qwjf0UQEv36ET6aaoFt47B7c1Wj7Fk8f4zYph9xqTSNs8BWREyXBIMEPkyS50zCMoXFVyFVqY41s5UrL0FaKaR5IUJmDjgIoNUsjHJ2KJ9qe5IevSDC8GrqiUrUxZ5AqTDV2jM_6ZvuiI0qeaqLRTl8Ap3s1vGnhnNUbRH97-fAYtmKgZKa9986GpPv7xcswUWD3FIWHICEi2qY9u0LzOS_4gl--qGQz7AHt8uQhAZ5RoJ_2QHphoItvMYs8EUVsWss9NUAq8MKkuHIUMmEWf2i1ItF_PnM6upu2xLXiQ8VDtgW-ZrXUsSzANODMB6R2w"
   );
   const { data, error } = await useAsyncGql({
     operation: "completed",
@@ -76,7 +76,7 @@ async function completed(id) {
 
 async function deletetodo(id) {
   useGqlToken(
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik9FWTJSVGM1UlVOR05qSXhSRUV5TURJNFFUWXdNekZETWtReU1EQXdSVUV4UVVRM05EazFNQSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6ImF1dGgwfDYzNzQwYmYzMzNhNjUyYWI1YjhiNDk0YiJ9LCJuaWNrbmFtZSI6Im1lbm5hZWxnYWxsYWQiLCJuYW1lIjoibWVubmFlbGdhbGxhZEBtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci8wZmI4Y2JjMjhiYzllYzVjZDMyMTk3NmJiYjA4OWJiMT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRm1lLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTExLTE1VDIyOjAwOjIwLjUxOFoiLCJpc3MiOiJodHRwczovL2dyYXBocWwtdHV0b3JpYWxzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mzc0MGJmMzMzYTY1MmFiNWI4YjQ5NGIiLCJhdWQiOiJQMzhxbkZvMWxGQVFKcnprdW4tLXdFenFsalZOR2NXVyIsImlhdCI6MTY2ODYzMTM2MiwiZXhwIjoxNjY4NjY3MzYyLCJhdF9oYXNoIjoiMkF6TkZFLTdDaDVRdXk3c1JkTkhnQSIsInNpZCI6IlhQZ3g1VGE5Rk5lWXZNeENHUkp4X1BmXzRJbzVpZmpWIiwibm9uY2UiOiJreGYtSlJvelF1Mmhfd0lrWEFPQmZjNTBxbUF1aHBDOSJ9.BsDfVUg2r-addMULy6vv-mL9nKJl-sg9CA1Jim-zcfQ3rJPcrdRjXCMyeBD7rDKw1SZSEVOpfPLt3b1v5tD9Xa9xON_6XfIo1GPVEfuMSfpAFuPTlpdoNT_dYRPDNXmjBhTeRJlKRj4EoILW50UWc_0ZU8CaVlKr0Ii59bokirrdMFox4MH9Taqk3_piPpeMfZvOKE7964BeNMtPvRSlAIjYqMuzaXt1ot2wqFtMHWzKdOxXTGAXxI2psiu7OGcwuJDNn18CjVIiRQ8VMz0Q9fbzThQKtJpfoElqWGWylNxoCQLQu7_fySgstj1fJAuOcod-S_dePtf5IYEMJH3P8A"
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik9FWTJSVGM1UlVOR05qSXhSRUV5TURJNFFUWXdNekZETWtReU1EQXdSVUV4UVVRM05EazFNQSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6ImF1dGgwfDYzNzQwYmYzMzNhNjUyYWI1YjhiNDk0YiJ9LCJuaWNrbmFtZSI6Im1lbm5hZWxnYWxsYWQiLCJuYW1lIjoibWVubmFlbGdhbGxhZEBtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci8wZmI4Y2JjMjhiYzllYzVjZDMyMTk3NmJiYjA4OWJiMT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRm1lLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTExLTE3VDA5OjMwOjM3LjQ5NloiLCJpc3MiOiJodHRwczovL2dyYXBocWwtdHV0b3JpYWxzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mzc0MGJmMzMzYTY1MmFiNWI4YjQ5NGIiLCJhdWQiOiJQMzhxbkZvMWxGQVFKcnprdW4tLXdFenFsalZOR2NXVyIsImlhdCI6MTY2ODY3NzQzOCwiZXhwIjoxNjY4NzEzNDM4LCJhdF9oYXNoIjoib1ppRzIyUGVvaF9lZUJyVzh2c0NmUSIsInNpZCI6Ijk3em9Fc3c3RWhtckhJcW9URG4zLUxyaWxLMmZVWmdOIiwibm9uY2UiOiJIMXZwZVRuenB4SlRfcTVCNnBoY2lrOXRicE5TfjFsZCJ9.gbSYn5cvJCujsuFJtpq04Qwjf0UQEv36ET6aaoFt47B7c1Wj7Fk8f4zYph9xqTSNs8BWREyXBIMEPkyS50zCMoXFVyFVqY41s5UrL0FaKaR5IUJmDjgIoNUsjHJ2KJ9qe5IevSDC8GrqiUrUxZ5AqTDV2jM_6ZvuiI0qeaqLRTl8Ap3s1vGnhnNUbRH97-fAYtmKgZKa9986GpPv7xcswUWD3FIWHICEi2qY9u0LzOS_4gl--qGQz7AHt8uQhAZ5RoJ_2QHphoItvMYs8EUVsWss9NUAq8MKkuHIUMmEWf2i1ItF_PnM6upu2xLXiQ8VDtgW-ZrXUsSzANODMB6R2w"
   );
   const { data, error } = await useAsyncGql({
     operation: "deletetodo",

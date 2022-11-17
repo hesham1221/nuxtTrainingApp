@@ -8,3 +8,19 @@ query GetUsers {
     }
   }
 }
+
+query userbyid($id: String) {
+  users(where: { id: { _eq: $id } }) {
+    name
+    todos {
+      title
+      user {
+        name
+        id
+      }
+      created_at
+      is_completed
+    }
+    id
+  }
+}
